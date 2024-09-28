@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class MiniHangmanGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String wordToGuess = "copilot";
+        StringBuilder displayWord = new StringBuilder("_".repeat(wordToGuess.length()));
+        int attempts = 0;
+        boolean isGuessed = false;
+
+        System.out.println("Welcome to Hangman Game!");
+        System.out.println("Guess the word by typing one letter at a time.");
+
+        while (attempts < 7 && !isGuessed) {
+            System.out.println("Word: " + displayWord);
+            System.out.print("Enter a letter: ");
+            String input = scanner.nextLine();
+            if (input.length() == 1) {
+                char letter = input.charAt(0);
+                boolean found = false;
+
+                for (int i = 0; i < wordToGuess.length(); i++) {
+                    if (wordToGuess.charAt(i) == letter) {
+                        displayWord.setCharAt(i, letter);
+                        found = true;
+                    }
+                }
+
+                if (!found) {
+                    attempts++;
+                    System.out.println("Incorrect guess. Attempts left: " + (7 - attempts));
+                }
+
+                if (displayWord.toString().equals(wordToGuess)) {
+                    isGuessed = true;
+                }
+            } else {
+                System.out.println("Please enter only one letter.");
+            }
+        }
+
+        if (isGuessed) {
+            System.out.println("Congratulations! You've guessed the word: " + wordToGuess);
+        } else {
+            System.out.println("Game over. The word was: " + wordToGuess);
+        }
+
+        scanner.close();
+    }
+}
