@@ -1,0 +1,20 @@
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class RobbingBankSimulator {
+    public RobbingBankSimulator{
+
+        JFrame frame = new JFrame();
+        JPanel panel = new panel();
+        panel.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
+        panel.setLayout(new GridLayout());
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 300);
+
+        JButton button = new JButton("Press");
+        frame.getContentPane().add(button); // Adds the button to the content pane
+
+        frame.setVisible(true);
+    }
